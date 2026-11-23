@@ -12,10 +12,12 @@ import os
 from pathlib import Path
 
 LETTER = "V"
+GATE_CHARS = 1  # the gate requires exactly 1 character in /output/entry.txt
 OUTPUT_PATH = Path("/output/entry.txt")
 
 
 def main() -> None:
+    assert len(LETTER) == GATE_CHARS
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(LETTER, encoding="utf-8")
     os.chmod(OUTPUT_PATH, 0o644)
